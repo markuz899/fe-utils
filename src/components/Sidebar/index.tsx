@@ -1,8 +1,12 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 interface IMenuItem {
   isOpen?: boolean;
+}
+
+interface ISidebar {
+  isOpen?: boolean;
+  setIsOpen?: any;
 }
 
 const menuItems = [
@@ -13,9 +17,7 @@ const menuItems = [
   { title: "Server list", icon: "" },
 ];
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
+const Sidebar = ({ isOpen, setIsOpen }: ISidebar) => {
   return (
     <Sider className={`sidebar ${!isOpen ? "sidebar_closed" : ""}`}>
       <button className={"sidebar_button"} onClick={() => setIsOpen(!isOpen)}>
@@ -40,14 +42,14 @@ const Sidebar = () => {
 export default Sidebar;
 
 const Sider = styled.div`
-  min-width: 250px;
+  width: 250px;
   background: darkslategrey;
   padding: 20px;
   color: white;
   transition: 0.2s ease-in;
 
   &.sidebar_closed {
-    min-width: 40px;
+    width: 50px;
   }
 
   .sidebar_button {
