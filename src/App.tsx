@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import Sidebar from "./components/Sidebar";
+import Icon from "./components/Icon";
 import Menu from "./components/Menu";
+import Popup from "./components/PopupMenu";
+import Sidebar from "./components/Sidebar";
 import styled from "styled-components";
 import "./App.css";
 
@@ -22,6 +24,8 @@ function App() {
   const [isOpenSidebar, setIsOpenSidebar] = useState(true);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [domReady, setDomReady] = useState(false);
+  const Modale: any = Popup;
+  const Icons: any = Icon;
 
   useEffect(() => {
     setDomReady(true);
@@ -126,6 +130,20 @@ function App() {
         </p>
       </Content>
       <Menu isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />
+      <Modale
+        onClickOther
+        size={[600]}
+        title="Contattaci"
+        render={({ close }: any) => (
+          <div>
+            Content modal <button onClick={close}>X</button>
+          </div>
+        )}
+      >
+        <Icons name="phone" color="#fff" size="25px" />
+      </Modale>
+      <div id="root-modal"></div>
+      <div id="root-popup"></div>
     </ContentApp>
   );
 }
