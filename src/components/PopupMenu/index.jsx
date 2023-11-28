@@ -4,7 +4,7 @@ import Icon from "../Icon";
 import { createPortal } from "react-dom";
 /* eslint-disable */
 
-const ROOT_ID = "root-popup";
+let ROOT_ID = "root-popup";
 
 const PopupMenu = ({
   title,
