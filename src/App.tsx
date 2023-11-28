@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Icon from "./components/Icon";
 import Menu from "./components/Menu";
+import Modal from "./components/Modal";
 import Popup from "./components/PopupMenu";
 import Sidebar from "./components/Sidebar";
 import styled from "styled-components";
@@ -13,6 +14,7 @@ function App() {
   const [isOpenSidebar, setIsOpenSidebar] = useState(true);
 
   const Popups: any = Popup;
+  const Modale: any = Modal;
   const Icons: any = Icon;
 
   return (
@@ -24,6 +26,18 @@ function App() {
             <button onClick={() => setIsOpenSidebar(!isOpenSidebar)}>
               SIDEBAR
             </button>
+            <Modale
+              onClickOther
+              size={[600]}
+              title="Modal"
+              render={({ close }: any) => (
+                <div>
+                  Content modal <button onClick={close}>X</button>
+                </div>
+              )}
+            >
+              <button>MODAL</button>
+            </Modale>
           </div>
           <a href="https://vitejs.dev" target="_blank">
             <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -118,7 +132,7 @@ function App() {
       <Popups
         onClickOther
         size={[600]}
-        title="Contattaci"
+        title="Popup"
         render={({ close }: any) => (
           <div>
             Content popup <button onClick={close}>X</button>
