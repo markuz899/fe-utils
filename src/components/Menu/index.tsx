@@ -60,6 +60,7 @@ const Sider = styled.div`
       color: white;
       transition: 0.3s linear;
       position: absolute;
+      top: 50px;
       left: -63px;
     }
   }
