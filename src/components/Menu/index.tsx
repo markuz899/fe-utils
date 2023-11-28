@@ -26,7 +26,7 @@ const Menu = ({ isActive, render }: IMenu) => {
     <Sider className={`sidebar_menu sidebar ${!state ? "sidebar_closed" : ""}`}>
       <div className="sidebar_content">
         <button className={"sidebar_button"} onClick={toggle}>
-          <Icons name="hamburger" color="#fff" size="20px" />
+          <Icons name="filter" color="#fff" size="20px" />
         </button>
         <div className="content_menu">{render && render(toggle)}</div>
       </div>

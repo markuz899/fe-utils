@@ -121,11 +121,11 @@ function App() {
         title="Contattaci"
         render={({ close }: any) => (
           <div>
-            Content modal <button onClick={close}>X</button>
+            Content popup <button onClick={close}>X</button>
           </div>
         )}
       >
-        <Icons name="phone" color="#fff" size="25px" />
+        <button>Compila anagrafica</button>
       </Popups>
       <div id="root-modal"></div>
       <div id="root-popup"></div>
