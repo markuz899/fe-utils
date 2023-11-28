@@ -1,46 +1,34 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Icon from "../Icon";
 
 interface IMenuItem {
   isOpen?: boolean;
 }
 
 interface IMenu {
-  isOpenMenu?: boolean;
-  setIsOpenMenu?: any;
+  isActive?: boolean;
+  render?: any;
 }
 
-const menuItems = [
-  { title: "Dashboard", icon: "" },
-  { title: "Users", icon: "" },
-  { title: "Cloud services", icon: "" },
-  { title: "Usage data", icon: "" },
-  { title: "Server list", icon: "" },
-];
+const Menu = ({ isActive, render }: IMenu) => {
+  const [state, setState] = useState(isActive);
+  const Icons: any = Icon;
 
-const Menu = ({ isOpenMenu, setIsOpenMenu }: IMenu) => {
+  useEffect(() => {
+    setState(isActive);
+  }, []);
+
+  const toggle = () => {
+    setState(!state);
+  };
   return (
-    <Sider
-      className={`sidebar_menu sidebar ${!isOpenMenu ? "sidebar_closed" : ""}`}
-    >
+    <Sider className={`sidebar_menu sidebar ${!state ? "sidebar_closed" : ""}`}>
       <div className="sebar_content">
-        <button
-          className={"sidebar_button"}
-          onClick={() => setIsOpenMenu(!isOpenMenu)}
-        >
-          ---
+        <button className={"sidebar_button"} onClick={toggle}>
+          <Icons name="hamburger" color="#fff" size="20px" />
         </button>
-        <ul>
-          {menuItems.map((item) => (
-            <MenuItem key={item.title} isOpen={isOpenMenu}>
-              <li>
-                <div className="item">
-                  ICON
-                  <span>{item.title}</span>
-                </div>
-              </li>
-            </MenuItem>
-          ))}
-        </ul>
+        <div className="content_menu">{render && render(toggle)}</div>
       </div>
     </Sider>
   );
@@ -72,7 +60,7 @@ const Sider = styled.div`
       color: white;
       transition: 0.3s linear;
       position: absolute;
-      left: -65px;
+      left: -63px;
     }
   }
 

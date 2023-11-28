@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Icon from "./components/Icon";
@@ -9,27 +8,12 @@ import Sidebar from "./components/Sidebar";
 import styled from "styled-components";
 import "./App.css";
 
-const Test = () => {
-  let portalDiv = document.querySelector(".sidebar_menu") as HTMLElement;
-  return (
-    <div style={{ border: "2px solid black" }}>
-      <p>This child is placed in the parent div.</p>
-      {createPortal(<p>This child is placed with the portal.</p>, portalDiv)}
-    </div>
-  );
-};
-
 function App() {
   const [count, setCount] = useState(0);
   const [isOpenSidebar, setIsOpenSidebar] = useState(true);
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const [domReady, setDomReady] = useState(false);
+
   const Modale: any = Popup;
   const Icons: any = Icon;
-
-  useEffect(() => {
-    setDomReady(true);
-  }, []);
 
   return (
     <ContentApp>
@@ -40,7 +24,6 @@ function App() {
             <button onClick={() => setIsOpenSidebar(!isOpenSidebar)}>
               SIDEBAR
             </button>
-            <button onClick={() => setIsOpenMenu(!isOpenMenu)}>MENU</button>
           </div>
           <a href="https://vitejs.dev" target="_blank">
             <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -57,7 +40,6 @@ function App() {
           <p>
             Edit <code>src/App.tsx</code> and save to test HMR
           </p>
-          {domReady && <Test />}
         </div>
         <p className="read-the-docs">
           Click on the Vite and React logos to learn more Lorem ipsum dolor sit
@@ -129,7 +111,10 @@ function App() {
           deserunt mollit anim id est laborum.
         </p>
       </Content>
-      <Menu isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu} />
+      <Menu
+        isActive={false}
+        render={(toggle: any) => <div onClick={toggle}>content menu</div>}
+      />
       <Modale
         onClickOther
         size={[600]}
