@@ -53,17 +53,15 @@ const PopupMenu = ({
         onClick={handleClickOnOverlay}
         ref={overlay}
       >
+        <div className="iconClose" onClick={close}>
+          <Icon name="close" color="#fff" size="15px" />
+        </div>
         <Content size={size} noTitle={noTitle} fullScreen={fullScreen}>
           {noTitle ? (
             ""
           ) : (
             <Header>
               <h2 className="text-primary">{title}</h2>
-              {!noCloseIcon && !isVisible && (
-                <div className="iconClose" onClick={close}>
-                  <Icon name="close" color="#000" />
-                </div>
-              )}
             </Header>
           )}
           {render && render({ close })}
@@ -110,7 +108,6 @@ const Root = styled.div`
   width: 350px;
   min-height: 100vh;
   z-index: 1000;
-  overflow: scroll;
   background: transparent;
   box-sizing: border-box;
   flex-wrap: wrap;
@@ -118,9 +115,20 @@ const Root = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  overflow: hidden;
-  box-shadow: -3px 0px 5px white;
   ${(p) => p.fullScreen && fullRoot};
+  .iconClose {
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    background: blue;
+    position: absolute;
+    top: 90px;
+    left: -30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const Header = styled.div`
@@ -137,11 +145,6 @@ const Header = styled.div`
     text-overflow: ellipsis;
     margin: 0;
     color: #000;
-  }
-  .iconClose {
-    position: absolute;
-    right: 30px;
-    cursor: pointer;
   }
 `;
 
