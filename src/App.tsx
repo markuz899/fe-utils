@@ -12,7 +12,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [isOpenSidebar, setIsOpenSidebar] = useState(true);
 
-  const Modale: any = Popup;
+  const Popups: any = Popup;
   const Icons: any = Icon;
 
   return (
@@ -115,7 +115,7 @@ function App() {
         isActive={false}
         render={(toggle: any) => <div onClick={toggle}>content menu</div>}
       />
-      <Modale
+      <Popups
         onClickOther
         size={[600]}
         title="Contattaci"
@@ -126,7 +126,7 @@ function App() {
         )}
       >
         <Icons name="phone" color="#fff" size="25px" />
-      </Modale>
+      </Popups>
       <div id="root-modal"></div>
       <div id="root-popup"></div>
     </ContentApp>

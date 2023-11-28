@@ -24,7 +24,7 @@ const Menu = ({ isActive, render }: IMenu) => {
   };
   return (
     <Sider className={`sidebar_menu sidebar ${!state ? "sidebar_closed" : ""}`}>
-      <div className="sebar_content">
+      <div className="sidebar_content">
         <button className={"sidebar_button"} onClick={toggle}>
           <Icons name="hamburger" color="#fff" size="20px" />
         </button>
@@ -50,7 +50,7 @@ const Sider = styled.div`
     right: -290px;
   }
 
-  .sebar_content {
+  .sidebar_content {
     position: relative;
     .sidebar_button {
       background: gray;
